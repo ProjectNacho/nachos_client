@@ -1,0 +1,29 @@
+  <div>
+    <div>{{error}}</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>City</th>
+          <th>Address</th>
+          <th>State</th>
+          <th>Zip</th>
+          <th>Happy Hour Start</th>
+          <th>Happy Hour End</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="restaraunt in restaraunts">
+          <td>{{restaraunt.name}}</td>
+          <td>{{restaraunt.phone}}</td>
+          <td>{{restaraunt.city}}</td>
+          <td>{{restaraunt.address}}</td>
+          <td>{{restaraunt.stateProvince}}</td>
+          <td>{{restaraunt.zip}}</td>
+          <td>{{restaraunt.happyHourStart | date}}</td>
+          <td>{{restaraunt.happyHourEnd | date}} </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

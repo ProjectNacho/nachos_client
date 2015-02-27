@@ -4,7 +4,7 @@
 
   var app = angular.module("restaurantViewer");
 
-  var RestaurantController = function($scope, $http) {
+  var RestaurantController = function($scope, $http, $routeParams) {
 
     var onRestarauntComplete = function(response) {
       $scope.restaraunts = response.data;
@@ -30,12 +30,16 @@
         .then(onRestarauntComplete, onError);
     };
 
-    $scope.welcome = "Welcome to Nachos Restaraunt Finder!";
+    $scope.distance = $routeParams.distance;
+    $scope.latitude = $routeParams.latitude;
+    $scope.longitude = $routeParams.longitude;
+    $scope.search($scope.distance, $scope.latitude, $scope.longitude);
+
  //   $scope.repoSortOrder = "-stargazers_count";
 
 
   };
   
-  app.controller("RestaurantController", ["$scope", "$http", RestaurantController]);
+  app.controller("RestaurantController", ["$scope", "$http", "$routeParams", RestaurantController]);
 
 }());
