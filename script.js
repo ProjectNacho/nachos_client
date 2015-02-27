@@ -15,12 +15,21 @@
     };
 
 
-    $scope.search = function(username){
-        $http.get("https://agile-sierra-8502.herokuapp.com/restaurants")
-          .then(onRestarauntComplete, onError);
+    $scope.search = function(distance, latitude, longitude){
+      url = "https://agile-sierra-8502.herokuapp.com/restaurants/.json?"
+      if (distance != null) {
+        url += "distance=" + distance + "&"
+      }
+      if (latitude != null) {
+        url += "latitude=" + latitude + "&"
+      }
+      if (longitude != null) {
+        url += "longitude=" + longitude + "&"
+      }
+      $http.get(url)
+        .then(onRestarauntComplete, onError);
     };
 
-    $scope.restarauntName = "";
     $scope.welcome = "Welcome to Nachos Restaraunt Finder!";
  //   $scope.repoSortOrder = "-stargazers_count";
 

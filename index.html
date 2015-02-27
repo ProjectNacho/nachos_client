@@ -12,8 +12,10 @@
   <body ng-controller="MainController">
     <h1>{{welcome}}</h1>
     <div>{{error}}</div>
-    <form name="findRestaraunts" ng-submit="search(restarauntName)">
-      <input type="search" placeholder="Restaraunt to find" ng-model="restarauntName" />
+    <form name="findRestaraunts" ng-submit="search(distance, latitude, longitude)">
+      <input type="search" placeholder="latitude" ng-model="latitude" />
+      <input type="search" placeholder="longitude" ng-model="longitude" />
+      <input type="search" placeholder="distance" ng-model="distance" />
       <input type="submit" class="form-control" value="Search" />
     </form>
     <table>
