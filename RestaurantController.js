@@ -2,9 +2,9 @@
 
 (function() {
 
-  var app = angular.module("restarauntViewer", []);
+  var app = angular.module("restaurantViewer");
 
-  var MainController = function($scope, $http) {
+  var RestaurantController = function($scope, $http) {
 
     var onRestarauntComplete = function(response) {
       $scope.restaraunts = response.data;
@@ -36,6 +36,6 @@
 
   };
   
-  app.controller("MainController", ["$scope", "$http", MainController]);
+  app.controller("RestaurantController", ["$scope", "$http", RestaurantController]);
 
 }());
