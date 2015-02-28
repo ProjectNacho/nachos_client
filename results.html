@@ -14,16 +14,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="restaraunt in restaraunts">
-          <td>{{restaraunt.name}}</td>
-          <td>{{restaraunt.phone}}</td>
-          <td>{{restaraunt.city}}</td>
-          <td>{{restaraunt.address}}</td>
-          <td>{{restaraunt.stateProvince}}</td>
-          <td>{{restaraunt.zip}}</td>
-          <td>{{restaraunt.happyHourStart | date}}</td>
-          <td>{{restaraunt.happyHourEnd | date}} </td>
+        <tr ng-repeat="restaurant in restaurants">
+          <td>{{restaurant.name}}</td>
+          <td>{{restaurant.phone}}</td>
+          <td>{{restaurant.city}}</td>
+          <td>{{restaurant.address}}</td>
+          <td>{{restaurant.stateProvince}}</td>
+          <td>{{restaurant.zip}}</td>
+          <td>{{restaurant.happyHourStart | date}}</td>
+          <td>{{restaurant.happyHourEnd | date}} </td>
         </tr>
       </tbody>
     </table>
+    <div id="map-canvas" ng-init="initializeMap()" style="width: 50%; height: 50%; position: absolute;"></div>
   </div>

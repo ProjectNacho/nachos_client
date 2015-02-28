@@ -7,7 +7,9 @@
   var RestaurantController = function($scope, $http, $routeParams) {
 
     var onRestarauntComplete = function(response) {
-      $scope.restaraunts = response.data;
+      $scope.restaurants = response.data;
+      $scope.searchComplete = true;
+      $scope.initializeMapPointers();
     };
     
     var onError = function(reason) {
@@ -28,6 +30,32 @@
       }
       $http.get(url)
         .then(onRestarauntComplete, onError);
+    };
+
+    $scope.initializeMap = function() {
+      var mapOptions = {
+        center: new google.maps.LatLng($scope.latitude, $scope.longitude),
+        zoom: 13
+      };
+      $scope.map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+      $scope.mapInitialized = true;
+      $scope.initializeMapPointers();
+    };
+
+    $scope.initializeMapPointers = function() {
+      // Make sure that this only happens after both the search has completed and the
+      // map has initialized (we don't know for sure what order they'll happen in)
+      if (!$scope.mapInitialized || !$scope.searchComplete) {
+        return;
+      }
+
+      angular.forEach($scope.restaurants, function(restaurant, key) {
+        var marker = new google.maps.Marker( {
+          position: new google.maps.LatLng(restaurant.latitude, restaurant.longitude),
+          map: $scope.map,
+          title: restaurant.name
+        });
+      });
     };
 
     $scope.distance = $routeParams.distance;
