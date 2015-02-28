@@ -1,0 +1,30 @@
+  <div>
+    <div>{{error}}</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>City</th>
+          <th>Address</th>
+          <th>State</th>
+          <th>Zip</th>
+          <th>Happy Hour Start</th>
+          <th>Happy Hour End</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="restaurant in restaurants">
+          <td>{{restaurant.name}}</td>
+          <td>{{restaurant.phone}}</td>
+          <td>{{restaurant.city}}</td>
+          <td>{{restaurant.address}}</td>
+          <td>{{restaurant.stateProvince}}</td>
+          <td>{{restaurant.zip}}</td>
+          <td>{{restaurant.happyHourStart | date}}</td>
+          <td>{{restaurant.happyHourEnd | date}} </td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="map-canvas" ng-init="initializeMap()" style="width: 50%; height: 50%; position: absolute;"></div>
+  </div>

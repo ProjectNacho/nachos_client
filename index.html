@@ -1,47 +1,20 @@
 <!DOCTYPE html>
-<html ng-app="restarauntViewer">
+<html ng-app="restaurantViewer">
 
   <head>
     <link data-require="bootstrap@*" data-semver="3.3.1" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
-     <script data-require="bootstrap@*" data-semver="3.3.1" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script data-require="bootstrap@*" data-semver="3.3.1" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script data-require="angular.js@*" data-semver="1.4.0-beta.4" src="https://code.angularjs.org/1.4.0-beta.4/angular.js"></script>
+    <script data-require="angular-route@*" data-semver="1.2.14" src="http://code.angularjs.org/1.2.14/angular-route.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdVvi7R_sWEJoEVk3cjSiigIewKYZcQ9I"></script>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <script src="app.js"></script>
+    <script src="MainController.js"></script>
+    <script src="RestaurantController.js"></script>
   </head>
 
-  <body ng-controller="MainController">
-    <h1>{{welcome}}</h1>
-    <div>{{error}}</div>
-    <form name="findRestaraunts" ng-submit="search(restarauntName)">
-      <input type="search" placeholder="Restaraunt to find" ng-model="restarauntName" />
-      <input type="submit" class="form-control" value="Search" />
-    </form>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Phone</th>
-          <th>City</th>
-          <th>Address</th>
-          <th>State</th>
-          <th>Zip</th>
-          <th>Happy Hour Start</th>
-          <th>Happy Hour End</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="restaraunt in restaraunts">
-          <td>{{restaraunt.name}}</td>
-          <td>{{restaraunt.phone}}</td>
-          <td>{{restaraunt.city}}</td>
-          <td>{{restaraunt.address}}</td>
-          <td>{{restaraunt.stateProvince}}</td>
-          <td>{{restaraunt.zip}}</td>
-          <td>{{restaraunt.happyHourStart | date}}</td>
-          <td>{{restaraunt.happyHourEnd | date}} </td>
-        </tr>
-      </tbody>
-    </table>
+  <body>
+    <h1>Welcome to Nachos Restaraunt Finder!</h1>
+    <div ng-view></div>
   </body>
-
 </html>

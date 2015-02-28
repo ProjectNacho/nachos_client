@@ -1,0 +1,11 @@
+  <div>
+    <form name="findRestaraunts" ng-submit="search(distance, latitude, longitude)">
+      <input type="search" placeholder="latitude" ng-model="latitude" />
+      <input type="search" placeholder="longitude" ng-model="longitude" />
+      <input type="search" placeholder="distance" ng-model="distance" />
+      <input type="submit" class="form-control" value="Search" />
+    </form>
+    <form name="useLocation" ng-submit="useCurrentLocation()" ng-show="haveLocation">
+      <input type="submit" class="form-control" value="Use Current Location" />
+    </form>
+  </div> 
