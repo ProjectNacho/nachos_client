@@ -12,6 +12,7 @@
       $scope.longitude = response.data.longitude;
       $scope.distance = response.data.distance;
       $scope.searchComplete = true;
+      window.restaurants = $scope.restaurants;
       $scope.initializeMapPointers();
     };
     
@@ -21,8 +22,8 @@
 
 
     $scope.search = function(distance, latitude, longitude){
-      url = "https://agile-sierra-8502.herokuapp.com/restaurants/.json?" // James
-      // url = "https://agile-depths-1206.herokuapp.com/restaurants/.json?" // Michael
+      //url = "https://agile-sierra-8502.herokuapp.com/restaurants/.json?" // James
+       url = "https://agile-depths-1206.herokuapp.com/restaurants/.json?" // Michael
       if (distance != null) {
         url += "distance=" + distance + "&"
       }
@@ -49,20 +50,32 @@
         return;
       }
 
-      var bounds = new google.maps.LatLngBounds();
+      userLocation = new google.maps.LatLng($scope.latitude, $scope.longitude);
 
-      angular.forEach($scope.restaurants, function(restaurant, key) {
-        position = new google.maps.LatLng(restaurant.latitude, restaurant.longitude);
-        bounds.extend(position);
-        var marker = new google.maps.Marker( {
-          position: position,
-          map: $scope.map,
-          title: restaurant.name
+
+      // Just show the search location if there aren't any results
+      if (restaurants.length == 0) {
+        $scope.map.setZoom(15);
+        $scope.map.setCenter(userLocation);
+      } else {
+        bounds = new google.maps.LatLngBounds();
+
+        bounds.extend(userLocation);
+
+        angular.forEach($scope.restaurants, function(restaurant, key) {
+          position = new google.maps.LatLng(restaurant.latitude, restaurant.longitude);
+          bounds.extend(position);
+          var marker = new google.maps.Marker( {
+            position: position,
+            map: $scope.map,
+            title: restaurant.name
+          });
         });
-      });
 
-      // Fit all markers on the map
-      $scope.map.fitBounds(bounds);
+        // Fit all markers on the map
+        $scope.map.fitBounds(bounds);
+      }
+
     };
 
     $scope.searchDistance = $routeParams.distance;
